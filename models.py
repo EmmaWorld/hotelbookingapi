@@ -21,30 +21,30 @@ class Customer(Base):
     Phone = Column(Integer)
     Address = Column(String)
 
-# # Hotel Model
-# class Hotel(Base):
-#     __tablename__ = 'Hotel'
-#     HotelID = Column(Integer, primary_key=True)
-#     Name = Column(String)
-#     Address = Column(String)
-#     Phone = Column(String)
-#     Email = Column(String)
-#     Rating = Column(Integer)
-#     Capacity = Column(Integer)
+# Hotel Model
+class Hotel(Base):
+    __tablename__ = 'Hotel'
+    HotelID = Column(Integer, primary_key=True)
+    Name = Column(String)
+    Address = Column(String)
+    Phone = Column(String)
+    Email = Column(String)
+    Rating = Column(Integer)
+    Capacity = Column(Integer)
 
-# # HotelBooking Model
-# class HotelBooking(Base):
-#     __tablename__ = 'HotelBooking'
-#     BookingID = Column(Integer, primary_key=True)
-#     CustomerID = Column(Integer, ForeignKey('Customer.CustomerID'))
-#     HotelID = Column(Integer, ForeignKey('Hotel.HotelID'))
-#     CheckInDate = Column(Date)
-#     CheckOutDate = Column(Date)
-#     RoomType = Column(String)
-#     TotalPrice = Column(Float)
+# HotelBooking Model
+class HotelBooking(Base):
+    __tablename__ = 'HotelBooking'
+    BookingID = Column(Integer, primary_key=True)
+    CustomerID = Column(Integer, ForeignKey('Customer.CustomerID'))
+    HotelID = Column(Integer, ForeignKey('Hotel.HotelID'))
+    CheckInDate = Column(Date)
+    CheckOutDate = Column(Date)
+    RoomType = Column(String)
+    TotalPrice = Column(Float)
 
-#     customer = relationship("Customer", secondary='booking_user', back_populates='hotelbookings')
-#     hotel = relationship("Hotel", backref="bookings")
+    customer = relationship("Customer", secondary='booking_user', back_populates='hotelbookings')
+    hotel = relationship("Hotel", backref="bookings")
 
 
 def create_database():
